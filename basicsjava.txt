@@ -1,0 +1,204 @@
+1. Reverse a Number
+public class Main {
+    public static void main(String[] args) {
+
+        int num = 1234;
+        int rev = 0;
+
+        while (num > 0) {
+            int rem = num % 10;
+            rev = rev * 10 + rem;
+            num = num / 10;
+        }
+
+        System.out.println(rev);
+    }
+}
+
+
+
+Palindrome Number
+public class Main {
+    public static void main(String[] args) {
+
+        int num = 121;
+        int original = num;
+        int rev = 0;
+
+        while (num > 0) {
+            int rem = num % 10;
+            rev = rev * 10 + rem;
+            num = num / 10;
+        }
+
+        if (original == rev) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not Palindrome");
+        }
+    }
+}
+
+
+
+
+
+
+
+Armstrong Number
+
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        int num = 153;
+        int original = num;
+        int sum = 0;
+
+        while (num > 0) {
+
+            int rem = num % 10;
+
+            sum = sum + rem * rem * rem;
+
+            num = num / 10;
+        }
+
+        if (sum == original) {
+            System.out.println("Armstrong Number");
+        } else {
+            System.out.println("Not Armstrong");
+        }
+    }
+}
+
+
+
+count Digits
+public class Main {
+    public static void main(String[] args) {
+
+        int num = 12345;
+        int count = 0;
+
+        while (num > 0) {
+            count++;
+            num = num / 10;
+        }
+
+        System.out.println(count);
+    }
+}
+
+
+
+
+Sum of Digits
+public class Main {
+    public static void main(String[] args) {
+
+        int num = 1234;
+        int sum = 0;
+
+        while (num > 0) {
+            int rem = num % 10;
+            sum = sum + rem;
+            num = num / 10;
+        }
+
+        System.out.println(sum);
+    }
+}
+
+
+
+ Check Prime Number
+public class Main {
+    public static void main(String[] args) {
+
+        int num = 7;
+        int count = 0;
+
+        for (int i = 1; i <= num; i++) {
+            if (num % i == 0) {
+                count++;
+            }
+        }
+
+        if (count == 2) {
+            System.out.println("Prime");
+        } else {
+            System.out.println("Not Prime");
+        }
+    }
+}
+
+
+ Print Prime Numbers from 1 to 100
+public class Main {
+    public static void main(String[] args) {
+
+        for (int num = 2; num <= 100; num++) {
+
+            int count = 0;
+
+            for (int i = 1; i <= num; i++) {
+
+                if (num % i == 0) {
+                    count++;
+                }
+            }
+
+            if (count == 2) {
+                System.out.print(num + " ");
+            }
+        }
+    }
+}
+
+
+Fibonacci Series
+public class Main {
+    public static void main(String[] args) {
+
+        int a = 0;
+        int b = 1;
+
+        for (int i = 1; i <= 10; i++) {
+
+            System.out.print(a + " ");
+
+            int c = a + b;
+
+            a = b;
+            b = c;
+        }
+    }
+}
+
+
+
+
+Perfect Number
+Example: 28 = 1 + 2 + 4 + 7 + 14.
+public class Main {
+    public static void main(String[] args) {
+
+        int num = 28;
+        int sum = 0;
+
+        for (int i = 1; i < num; i++) {
+
+            if (num % i == 0) {
+                sum = sum + i;
+            }
+        }
+
+        if (sum == num) {
+            System.out.println("Perfect Number");
+        } else {
+            System.out.println("Not Perfect Number");
+        }
+    }
+}
