@@ -1,0 +1,188 @@
+1. Reverse a String
+
+class ReverseString {
+    public static void main(String[] args) {
+
+        String str = "Java";
+        String rev = "";
+
+        for (int i = str.length() - 1; i >= 0; i--) {
+            rev = rev + str.charAt(i);
+        }
+
+        System.out.println("Reverse: " + rev);
+    }
+}
+
+
+
+Output: avaJ
+2. String Palindrome
+
+class StringPalindrome {
+    public static void main(String[] args) {
+
+        String str = "madam";
+        String rev = "";
+
+        for (int i = str.length() - 1; i >= 0; i--) {
+            rev = rev + str.charAt(i);
+        }
+
+        if (str.equals(rev)) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not Palindrome");
+        }
+    }
+}
+
+
+
+3. Count Vowels and Consonants
+
+class VowelsConsonants {
+    public static void main(String[] args) {
+
+        String str = "Hello Java";
+        int vowels = 0;
+        int consonants = 0;
+
+        str = str.toLowerCase();
+
+        for (int i = 0; i < str.length(); i++) {
+
+            char ch = str.charAt(i);
+
+            if (ch >= 'a' && ch <= 'z') {
+
+                if (ch == 'a' || ch == 'e' ||
+                    ch == 'i' || ch == 'o' || ch == 'u') {
+                    vowels++;
+                } else {
+                    consonants++;
+                }
+            }
+        }
+
+        System.out.println("Vowels: " + vowels);
+        System.out.println("Consonants: " + consonants);
+    }
+}
+
+
+
+4. Count Words in a String
+
+class CountWords {
+    public static void main(String[] args) {
+
+        String str = "Java is very easy";
+
+        String[] words = str.trim().split("\\s+");
+
+        System.out.println("Total words: " + words.length);
+    }
+}
+
+
+
+Output: Total words: 4
+5. Character Frequency
+
+class CharacterFrequency {
+    public static void main(String[] args) {
+
+        String str = "banana";
+
+        for (int i = 0; i < str.length(); i++) {
+
+            char ch = str.charAt(i);
+            int count = 0;
+
+            if (str.indexOf(ch) != i) {
+                continue;
+            }
+
+            for (int j = 0; j < str.length(); j++) {
+                if (str.charAt(j) == ch) {
+                    count++;
+                }
+            }
+
+            System.out.println(ch + " = " + count);
+        }
+    }
+}
+
+
+
+6. Remove Duplicate Characters
+
+class RemoveDuplicates {
+    public static void main(String[] args) {
+
+        String str = "programming";
+        String result = "";
+
+        for (int i = 0; i < str.length(); i++) {
+
+            char ch = str.charAt(i);
+
+            if (result.indexOf(ch) == -1) {
+                result = result + ch;
+            }
+        }
+
+        System.out.println(result);
+    }
+}
+
+
+
+Output: progamin
+7. Check Anagram
+
+import java.util.Arrays;
+
+class Anagram {
+    public static void main(String[] args) {
+
+        String s1 = "listen";
+        String s2 = "silent";
+
+        char[] a = s1.toCharArray();
+        char[] b = s2.toCharArray();
+
+        Arrays.sort(a);
+        Arrays.sort(b);
+
+        if (Arrays.equals(a, b)) {
+            System.out.println("Anagram");
+        } else {
+            System.out.println("Not Anagram");
+        }
+    }
+}
+
+
+
+8. Reverse Each Word
+
+class ReverseEachWord {
+    public static void main(String[] args) {
+
+        String str = "Java is easy";
+
+        String[] words = str.split(" ");
+
+        for (String word : words) {
+
+            for (int i = word.length() - 1; i >= 0; i--) {
+                System.out.print(word.charAt(i));
+            }
+
+            System.out.print(" ");
+        }
+    }
+}

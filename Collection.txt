@@ -1,0 +1,386 @@
+1. ArrayList — Insert, Update, Delete
+
+import java.util.ArrayList;
+
+class ArrayListCRUD {
+    public static void main(String[] args) {
+
+        ArrayList<String> list = new ArrayList<>();
+
+        list.add("Java");
+        list.add("Python");
+        list.add("C++");
+
+        System.out.println("Original: " + list);
+
+        list.set(1, "Spring");
+
+        System.out.println("Updated: " + list);
+
+        list.remove("C++");
+
+        System.out.println("Deleted: " + list);
+    }
+}
+
+
+
+2. LinkedList — Insert and Delete
+
+import java.util.LinkedList;
+
+class LinkedListExample {
+    public static void main(String[] args) {
+
+        LinkedList<Integer> list = new LinkedList<>();
+
+        list.add(10);
+        list.add(20);
+        list.add(30);
+
+        list.addFirst(5);
+        list.addLast(40);
+
+        System.out.println("Original: " + list);
+
+        list.removeFirst();
+        list.removeLast();
+
+        System.out.println("After Delete: " + list);
+    }
+}
+
+
+
+3. HashSet — Remove Duplicates
+
+import java.util.HashSet;
+
+class HashSetExample {
+    public static void main(String[] args) {
+
+        HashSet<Integer> set = new HashSet<>();
+
+        set.add(10);
+        set.add(20);
+        set.add(10);
+        set.add(30);
+        set.add(20);
+
+        System.out.println(set);
+    }
+}
+
+
+
+4. LinkedHashSet — Maintain Insertion Order
+
+import java.util.LinkedHashSet;
+
+class LinkedHashSetExample {
+    public static void main(String[] args) {
+
+        LinkedHashSet<String> set = new LinkedHashSet<>();
+
+        set.add("Java");
+        set.add("Python");
+        set.add("C++");
+        set.add("Java");
+
+        System.out.println(set);
+    }
+}
+
+
+
+Output:
+[Java, Python, C++]
+
+
+5. TreeSet — Sort Elements
+
+import java.util.TreeSet;
+
+class TreeSetExample {
+    public static void main(String[] args) {
+
+        TreeSet<Integer> set = new TreeSet<>();
+
+        set.add(50);
+        set.add(10);
+        set.add(40);
+        set.add(20);
+
+        System.out.println(set);
+    }
+}
+
+
+
+Output: [10, 20, 40, 50]
+6. HashMap — Insert, Update, Delete
+
+import java.util.HashMap;
+
+class HashMapCRUD {
+    public static void main(String[] args) {
+
+        HashMap<Integer, String> map = new HashMap<>();
+
+        // Insert
+        map.put(1, "Java");
+        map.put(2, "Python");
+        map.put(3, "C++");
+
+        System.out.println(map);
+
+        // Read
+        System.out.println(map.get(1));
+
+        // Update
+        map.put(2, "Spring");
+
+        System.out.println("Updated: " + map);
+
+        // Delete
+        map.remove(3);
+
+        System.out.println("Deleted: " + map);
+    }
+}
+
+
+
+7. LinkedHashMap — Maintain Insertion Order
+
+import java.util.LinkedHashMap;
+
+class LinkedHashMapExample {
+    public static void main(String[] args) {
+
+        LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+
+        map.put(1, "Apple");
+        map.put(2, "Banana");
+        map.put(3, "Mango");
+
+        System.out.println(map);
+    }
+}
+
+
+
+8. TreeMap — Sort Keys
+
+import java.util.TreeMap;
+
+class TreeMapExample {
+    public static void main(String[] args) {
+
+        TreeMap<Integer, String> map = new TreeMap<>();
+
+        map.put(30, "Java");
+        map.put(10, "Python");
+        map.put(20, "C++");
+
+        System.out.println(map);
+    }
+}
+
+
+
+Output:
+{10=Python, 20=C++, 30=Java}
+
+
+9. Iterator — Traverse Collection
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+class IteratorExample {
+    public static void main(String[] args) {
+
+        ArrayList<String> list = new ArrayList<>();
+
+        list.add("Java");
+        list.add("Python");
+        list.add("C++");
+
+        Iterator<String> itr = list.iterator();
+
+        while (itr.hasNext()) {
+            System.out.println(itr.next());
+        }
+    }
+}
+
+
+
+10. Remove Elements Using Iterator
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+class IteratorRemove {
+    public static void main(String[] args) {
+
+        ArrayList<Integer> list = new ArrayList<>();
+
+        list.add(10);
+        list.add(20);
+        list.add(30);
+        list.add(40);
+
+        Iterator<Integer> itr = list.iterator();
+
+        while (itr.hasNext()) {
+
+            int num = itr.next();
+
+            if (num == 20) {
+                itr.remove();
+            }
+        }
+
+        System.out.println(list);
+    }
+}
+
+
+
+11. Comparable — Sort Objects
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+class Student implements Comparable<Student> {
+
+    int marks;
+
+    Student(int marks) {
+        this.marks = marks;
+    }
+
+    public int compareTo(Student s) {
+        return this.marks - s.marks;
+    }
+}
+
+class ComparableExample {
+    public static void main(String[] args) {
+
+        ArrayList<Student> list = new ArrayList<>();
+
+        list.add(new Student(80));
+        list.add(new Student(60));
+        list.add(new Student(90));
+
+        Collections.sort(list);
+
+        for (Student s : list) {
+            System.out.println(s.marks);
+        }
+    }
+}
+
+
+
+12. Comparator — Custom Sorting
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+class ComparatorExample {
+    public static void main(String[] args) {
+
+        ArrayList<Integer> list = new ArrayList<>();
+
+        list.add(50);
+        list.add(10);
+        list.add(40);
+        list.add(20);
+
+        Collections.sort(list, Comparator.reverseOrder());
+
+        System.out.println(list);
+    }
+}
+
+
+
+Output: [50, 40, 20, 10]
+13. PriorityQueue
+
+import java.util.PriorityQueue;
+
+class PriorityQueueExample {
+    public static void main(String[] args) {
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        pq.add(40);
+        pq.add(10);
+        pq.add(30);
+        pq.add(20);
+
+        System.out.println(pq.poll());
+        System.out.println(pq.poll());
+        System.out.println(pq.peek());
+    }
+}
+
+
+
+Output:
+10
+20
+30
+
+
+14. Stack — Push, Pop, Peek
+
+import java.util.Stack;
+
+class StackExample {
+    public static void main(String[] args) {
+
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+
+        System.out.println(stack);
+
+        System.out.println("Top: " + stack.peek());
+
+        stack.pop();
+
+        System.out.println("After Pop: " + stack);
+    }
+}
+
+
+
+15. Collections.sort()
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+class SortExample {
+    public static void main(String[] args) {
+
+        ArrayList<Integer> list = new ArrayList<>();
+
+        list.add(50);
+        list.add(10);
+        list.add(40);
+        list.add(20);
+
+        Collections.sort(list);
+
+        System.out.println(list);
+    }
+}
