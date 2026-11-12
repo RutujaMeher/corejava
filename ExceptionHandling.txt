@@ -1,0 +1,361 @@
+1. Basic try-catch
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int a = 10 / 0;
+        }
+        catch(ArithmeticException e) {
+            System.out.println(e);
+        }
+    }
+}
+
+
+2. Multiple catch Blocks
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int arr[] = {1, 2, 3};
+            System.out.println(arr[5]);
+            int a = 10 / 0;
+        }
+        catch(ArithmeticException e) {
+            System.out.println("Arithmetic Exception");
+        }
+        catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array Index Exception");
+        }
+    }
+}
+
+
+3. finally Block
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int a = 10 / 2;
+            System.out.println(a);
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        finally {
+            System.out.println("Finally block executed");
+        }
+    }
+}
+
+
+4. throw Keyword
+public class Main {
+    public static void main(String[] args) {
+        int age = 15;
+
+        try {
+            if(age < 18) {
+                throw new ArithmeticException("Not eligible");
+            }
+            System.out.println("Eligible");
+        }
+        catch(ArithmeticException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+5. throws Keyword
+public class Main {
+
+    static void divide() throws ArithmeticException {
+        int a = 10 / 0;
+        System.out.println(a);
+    }
+
+    public static void main(String[] args) {
+        try {
+            divide();
+        }
+        catch(ArithmeticException e) {
+            System.out.println(e);
+        }
+    }
+}
+
+
+6. Checked Exception
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            FileReader file = new FileReader("data.txt");
+            file.close();
+        }
+        catch(IOException e) {
+            System.out.println(e);
+        }
+    }
+}
+
+
+7. Unchecked Exception
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int a = 10 / 0;
+        }
+        catch(ArithmeticException e) {
+            System.out.println("Cannot divide by zero");
+        }
+    }
+}
+
+
+8. ArrayIndexOutOfBoundsException
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int arr[] = {10, 20, 30};
+            System.out.println(arr[5]);
+        }
+        catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println("Invalid index");
+        }
+    }
+}
+
+
+9. NullPointerException
+public class Main {
+    public static void main(String[] args) {
+        try {
+            String str = null;
+            System.out.println(str.length());
+        }
+        catch(NullPointerException e) {
+            System.out.println("Null value found");
+        }
+    }
+}
+
+
+10. NumberFormatException
+public class Main {
+    public static void main(String[] args) {
+        try {
+            String str = "abc";
+            int num = Integer.parseInt(str);
+            System.out.println(num);
+        }
+        catch(NumberFormatException e) {
+            System.out.println("Invalid number");
+        }
+    }
+}
+
+
+11. Multiple Exceptions using Multi-catch
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int a = 10 / 0;
+        }
+        catch(ArithmeticException | NullPointerException e) {
+            System.out.println("Exception occurred");
+        }
+    }
+}
+
+
+12. Nested try-catch
+public class Main {
+    public static void main(String[] args) {
+        try {
+            try {
+                int a = 10 / 0;
+            }
+            catch(ArithmeticException e) {
+                System.out.println("Inner catch");
+            }
+
+            int arr[] = {1, 2};
+            System.out.println(arr[5]);
+        }
+        catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println("Outer catch");
+        }
+    }
+}
+
+
+13. Custom Exception using extends Exception
+class MyException extends Exception {
+    MyException(String msg) {
+        super(msg);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int age = 15;
+
+            if(age < 18) {
+                throw new MyException("Not eligible");
+            }
+
+            System.out.println("Eligible");
+        }
+        catch(MyException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+14. Custom Unchecked Exception
+class MyException extends RuntimeException {
+    MyException(String msg) {
+        super(msg);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            throw new MyException("Custom unchecked exception");
+        }
+        catch(MyException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+15. Exception Propagation
+public class Main {
+
+    static void method3() {
+        int a = 10 / 0;
+    }
+
+    static void method2() {
+        method3();
+    }
+
+    static void method1() {
+        method2();
+    }
+
+    public static void main(String[] args) {
+        try {
+            method1();
+        }
+        catch(ArithmeticException e) {
+            System.out.println("Exception handled in main");
+        }
+    }
+}
+
+
+16. getMessage() Method
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int a = 10 / 0;
+        }
+        catch(ArithmeticException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+17. printStackTrace() Method
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int a = 10 / 0;
+        }
+        catch(ArithmeticException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+18. User Input Exception Handling
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.println("Enter number:");
+            int a = sc.nextInt();
+
+            System.out.println(100 / a);
+        }
+        catch(ArithmeticException e) {
+            System.out.println("Cannot divide by zero");
+        }
+        catch(Exception e) {
+            System.out.println("Invalid input");
+        }
+        finally {
+            sc.close();
+        }
+    }
+}
+
+
+19. try-with-resources
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        try(FileReader fr = new FileReader("data.txt")) {
+
+            int ch;
+
+            while((ch = fr.read()) != -1) {
+                System.out.print((char)ch);
+            }
+        }
+        catch(IOException e) {
+            System.out.println(e);
+        }
+    }
+}
+
+
+20. Overriding Method with Exception
+class Parent {
+    void show() throws Exception {
+        System.out.println("Parent method");
+    }
+}
+
+class Child extends Parent {
+    void show() throws IOException {
+        System.out.println("Child method");
+    }
+}
+
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) {
+        Parent obj = new Child();
+
+        try {
+            obj.show();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+    }
+}

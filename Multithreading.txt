@@ -1,0 +1,333 @@
+1. Creating Thread using Thread Class
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Thread running");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        t1.start();
+    }
+}
+
+
+2. Creating Thread using Runnable Interface
+class MyThread implements Runnable {
+    public void run() {
+        System.out.println("Runnable running");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread obj = new MyThread();
+        Thread t1 = new Thread(obj);
+        t1.start();
+    }
+}
+
+
+3. sleep() Method
+class MyThread extends Thread {
+    public void run() {
+        for(int i = 1; i <= 5; i++) {
+            System.out.println(i);
+            try {
+                Thread.sleep(1000);
+            }
+            catch(InterruptedException e) {
+                System.out.println(e);
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        t1.start();
+    }
+}
+
+
+4. join() Method
+class MyThread extends Thread {
+    public void run() {
+        for(int i = 1; i <= 5; i++) {
+            System.out.println(i);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        t1.start();
+
+        try {
+            t1.join();
+        }
+        catch(InterruptedException e) {
+            System.out.println(e);
+        }
+
+        System.out.println("Main completed");
+    }
+}
+
+
+5. yield() Method
+class MyThread extends Thread {
+    public void run() {
+        for(int i = 1; i <= 5; i++) {
+            System.out.println(Thread.currentThread().getName());
+            Thread.yield();
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        MyThread t2 = new MyThread();
+
+        t1.start();
+        t2.start();
+    }
+}
+
+
+6. setPriority() and getPriority()
+class MyThread extends Thread {
+    public void run() {
+        System.out.println(getName() + " " + getPriority());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        MyThread t2 = new MyThread();
+
+        t1.setPriority(1);
+        t2.setPriority(10);
+
+        t1.start();
+        t2.start();
+    }
+}
+
+
+7. getName() and setName()
+class MyThread extends Thread {
+    public void run() {
+        System.out.println(Thread.currentThread().getName());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+
+        t1.setName("MyThread");
+        t1.start();
+    }
+}
+
+
+8. isAlive() Method
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Thread running");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+
+        System.out.println(t1.isAlive());
+
+        t1.start();
+
+        System.out.println(t1.isAlive());
+    }
+}
+
+
+9. ThreadGroup Class
+class MyThread extends Thread {
+    MyThread(ThreadGroup tg, String name) {
+        super(tg, name);
+    }
+
+    public void run() {
+        System.out.println(getName());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ThreadGroup tg = new ThreadGroup("Group1");
+
+        MyThread t1 = new MyThread(tg, "Thread1");
+        MyThread t2 = new MyThread(tg, "Thread2");
+
+        t1.start();
+        t2.start();
+
+        System.out.println(tg.getName());
+        System.out.println(tg.activeCount());
+    }
+}
+
+
+10. Synchronization using synchronized Method
+class Table {
+    synchronized void printTable(int n) {
+        for(int i = 1; i <= 5; i++) {
+            System.out.println(n * i);
+        }
+    }
+}
+
+class MyThread extends Thread {
+    Table t;
+    int n;
+
+    MyThread(Table t, int n) {
+        this.t = t;
+        this.n = n;
+    }
+
+    public void run() {
+        t.printTable(n);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Table obj = new Table();
+
+        MyThread t1 = new MyThread(obj, 2);
+        MyThread t2 = new MyThread(obj, 5);
+
+        t1.start();
+        t2.start();
+    }
+}
+
+
+11. Static Synchronization
+class Test {
+    static synchronized void display() {
+        System.out.println(Thread.currentThread().getName());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Thread t1 = new Thread(() -> Test.display());
+        Thread t2 = new Thread(() -> Test.display());
+
+        t1.start();
+        t2.start();
+    }
+}
+
+
+12. wait() and notify()
+class Demo {
+    synchronized void show() {
+        System.out.println("Waiting");
+
+        try {
+            wait();
+        }
+        catch(InterruptedException e) {
+            System.out.println(e);
+        }
+
+        System.out.println("Resumed");
+    }
+
+    synchronized void wake() {
+        notify();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Demo obj = new Demo();
+
+        Thread t1 = new Thread(() -> obj.show());
+
+        t1.start();
+
+        Thread.sleep(1000);
+
+        synchronized(obj) {
+            obj.notify();
+        }
+    }
+}
+
+
+13. notifyAll() Method
+class Demo {
+    synchronized void show() {
+        System.out.println(Thread.currentThread().getName());
+
+        try {
+            wait();
+        }
+        catch(InterruptedException e) {
+            System.out.println(e);
+        }
+
+        System.out.println("Resumed");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Demo obj = new Demo();
+
+        Thread t1 = new Thread(() -> obj.show());
+        Thread t2 = new Thread(() -> obj.show());
+
+        t1.start();
+        t2.start();
+
+        Thread.sleep(1000);
+
+        synchronized(obj) {
+            obj.notifyAll();
+        }
+    }
+}
+
+
+14. ConcurrentHashMap
+import java.util.concurrent.ConcurrentHashMap;
+
+public class Main {
+    public static void main(String[] args) {
+        ConcurrentHashMap<Integer, String> map =
+            new ConcurrentHashMap<>();
+
+        map.put(1, "Java");
+        map.put(2, "Python");
+        map.put(3, "C++");
+
+        System.out.println(map);
+
+        System.out.println(map.get(1));
+
+        map.remove(2);
+
+        System.out.println(map.containsKey(3));
+    }
+}
