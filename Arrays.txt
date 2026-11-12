@@ -1,0 +1,374 @@
+1. Declare and Print Array
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
+    }
+}
+
+
+2. Take Array Input
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] arr = new int[5];
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        for (int x : arr) {
+            System.out.println(x);
+        }
+    }
+}
+
+
+3. Sum of Array Elements
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40};
+        int sum = 0;
+
+        for (int x : arr) {
+            sum += x;
+        }
+
+        System.out.println(sum);
+    }
+}
+
+
+4. Find Maximum Element
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {10, 50, 20, 80, 30};
+        int max = arr[0];
+
+        for (int x : arr) {
+            if (x > max) {
+                max = x;
+            }
+        }
+
+        System.out.println(max);
+    }
+}
+
+
+5. Find Minimum Element
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {10, 50, 20, 80, 30};
+        int min = arr[0];
+
+        for (int x : arr) {
+            if (x < min) {
+                min = x;
+            }
+        }
+
+        System.out.println(min);
+    }
+}
+
+
+6. Search an Element (Linear Search)
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
+        int key = 30;
+        boolean found = false;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == key) {
+                System.out.println("Found at index " + i);
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Not found");
+        }
+    }
+}
+
+
+7. Reverse an Array
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+}
+
+
+8. Copy an Array
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] arr1 = {10, 20, 30, 40};
+        int[] arr2 = Arrays.copyOf(arr1, arr1.length);
+
+        System.out.println(Arrays.toString(arr2));
+    }
+}
+
+
+9. Sort Array (Ascending)
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {50, 10, 40, 20, 30};
+
+        Arrays.sort(arr);
+
+        System.out.println(Arrays.toString(arr));
+    }
+}
+
+
+10. Sort Array (Descending)
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Main {
+    public static void main(String[] args) {
+        Integer[] arr = {50, 10, 40, 20, 30};
+
+        Arrays.sort(arr, Collections.reverseOrder());
+
+        System.out.println(Arrays.toString(arr));
+    }
+}
+
+
+11. Count Even and Odd Numbers
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {10, 15, 20, 25, 30};
+
+        int even = 0, odd = 0;
+
+        for (int x : arr) {
+            if (x % 2 == 0)
+                even++;
+            else
+                odd++;
+        }
+
+        System.out.println("Even: " + even);
+        System.out.println("Odd: " + odd);
+    }
+}
+
+
+12. Find Second Largest Element
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {10, 50, 30, 80, 60};
+
+        int first = Integer.MIN_VALUE;
+        int second = Integer.MIN_VALUE;
+
+        for (int x : arr) {
+            if (x > first) {
+                second = first;
+                first = x;
+            } else if (x > second && x != first) {
+                second = x;
+            }
+        }
+
+        System.out.println(second);
+    }
+}
+
+
+13. Remove Duplicate Elements
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 10, 30, 20};
+
+        for (int i = 0; i < arr.length; i++) {
+            boolean duplicate = false;
+
+            for (int j = 0; j < i; j++) {
+                if (arr[i] == arr[j]) {
+                    duplicate = true;
+                    break;
+                }
+            }
+
+            if (!duplicate) {
+                System.out.print(arr[i] + " ");
+            }
+        }
+    }
+}
+
+
+14. Merge Two Arrays
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] a = {10, 20, 30};
+        int[] b = {40, 50, 60};
+
+        int[] c = new int[a.length + b.length];
+
+        System.arraycopy(a, 0, c, 0, a.length);
+        System.arraycopy(b, 0, c, a.length, b.length);
+
+        System.out.println(Arrays.toString(c));
+    }
+}
+
+
+15. Reverse Array In-Place
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
+
+        int start = 0;
+        int end = arr.length - 1;
+
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+
+            start++;
+            end--;
+        }
+
+        for (int x : arr) {
+            System.out.print(x + " ");
+        }
+    }
+}
+
+
+16. Binary Search
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
+        int key = 40;
+
+        int low = 0;
+        int high = arr.length - 1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            if (arr[mid] == key) {
+                System.out.println("Found at index " + mid);
+                return;
+            } else if (arr[mid] < key) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        System.out.println("Not found");
+    }
+}
+
+
+17. Two-Dimensional Array (Matrix)
+public class Main {
+    public static void main(String[] args) {
+        int[][] arr = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+18. Addition of Two Matrices
+public class Main {
+    public static void main(String[] args) {
+        int[][] a = {{1, 2}, {3, 4}};
+        int[][] b = {{5, 6}, {7, 8}};
+        int[][] c = new int[2][2];
+
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                c[i][j] = a[i][j] + b[i][j];
+                System.out.print(c[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+19. Transpose of Matrix
+public class Main {
+    public static void main(String[] args) {
+        int[][] arr = {{1, 2, 3}, {4, 5, 6}};
+
+        for (int j = 0; j < 3; j++) {
+            for (int i = 0; i < 2; i++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+20. Find Frequency of Elements
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 10, 30, 20, 10};
+
+        for (int i = 0; i < arr.length; i++) {
+            boolean counted = false;
+
+            for (int j = 0; j < i; j++) {
+                if (arr[i] == arr[j]) {
+                    counted = true;
+                    break;
+                }
+            }
+
+            if (!counted) {
+                int count = 0;
+
+                for (int x : arr) {
+                    if (x == arr[i]) {
+                        count++;
+                    }
+                }
+
+                System.out.println(arr[i] + " = " + count);
+            }
+        }
+    }
+}
