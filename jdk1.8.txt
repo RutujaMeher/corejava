@@ -1,0 +1,194 @@
+1. Static Method in Interface
+interface ABC {
+    static void show() {
+        System.out.println("I am show method");
+    }
+}
+
+public class StaticMethodDemo {
+    public static void main(String[] args) {
+        ABC.show();
+    }
+}
+
+
+2. Default Method in Interface
+interface ABC {
+    default void show() {
+        System.out.println("I am default method");
+    }
+}
+
+public class DefaultMethodDemo {
+    public static void main(String[] args) {
+        ABC obj = new ABC() {};
+        obj.show();
+    }
+}
+
+
+3. Functional Interface
+@FunctionalInterface
+interface ABC {
+    void display();
+}
+
+public class FunctionalInterfaceDemo {
+    public static void main(String[] args) {
+        ABC obj = () -> System.out.println("Hello Java 8");
+        obj.display();
+    }
+}
+
+
+4. Lambda Expression
+@FunctionalInterface
+interface ABC {
+    void show();
+}
+
+public class LambdaDemo {
+    public static void main(String[] args) {
+        ABC obj = () -> System.out.println("I am Lambda Expression");
+        obj.show();
+    }
+}
+
+
+5. Lambda Expression with Return Value
+@FunctionalInterface
+interface Square {
+    int getSquare(int no);
+}
+
+public class LambdaReturnDemo {
+    public static void main(String[] args) {
+        Square obj = no -> no * no;
+
+        System.out.println("Square is " + obj.getSquare(5));
+    }
+}
+
+
+6. Consumer Interface
+import java.util.function.Consumer;
+
+public class ConsumerDemo {
+    public static void main(String[] args) {
+        Consumer<Integer> c = t ->
+            System.out.println("Cube is " + (t * t * t));
+
+        c.accept(10);
+    }
+}
+
+
+7. forEach() Method
+import java.util.*;
+
+public class ForEachDemo {
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(10, 20, 30, 40, 50);
+
+        list.forEach(t -> System.out.println(t));
+    }
+}
+
+
+8. Predicate Interface
+import java.util.function.Predicate;
+
+public class PredicateDemo {
+    public static void main(String[] args) {
+        Predicate<Integer> p = t -> t % 2 == 0;
+
+        if (p.test(11)) {
+            System.out.println("Number is EVEN");
+        } else {
+            System.out.println("Number is ODD");
+        }
+    }
+}
+
+
+9. Combining Predicates
+import java.util.function.Predicate;
+
+public class PredicateAndDemo {
+    public static void main(String[] args) {
+        Predicate<Integer> p1 = t -> t >= 10;
+        Predicate<Integer> p2 = t -> t <= 20;
+
+        Predicate<Integer> p3 = p1.and(p2);
+
+        System.out.println(p3.test(12));
+    }
+}
+
+
+10. Function Interface
+import java.util.function.Function;
+
+public class FunctionDemo {
+    public static void main(String[] args) {
+        Function<Integer, Integer> f = t -> t * 10;
+
+        System.out.println("Result is " + f.apply(10));
+    }
+}
+
+
+11. Method Reference
+import java.util.*;
+
+public class MethodReferenceDemo {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Java", "Python", "C++");
+
+        names.forEach(System.out::println);
+    }
+}
+
+12. Stream API
+import java.util.*;
+import java.util.stream.*;
+
+public class StreamDemo {
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(10, 20, 30, 40, 50);
+
+        list.stream()
+            .filter(n -> n > 20)
+            .forEach(System.out::println);
+    }
+}
+
+
+13. Optional Class
+import java.util.Optional;
+
+public class OptionalDemo {
+    public static void main(String[] args) {
+        String name = null;
+
+        Optional<String> obj = Optional.ofNullable(name);
+
+        System.out.println(obj.orElse("Not Found"));
+    }
+}
+
+
+14. Date and Time API
+import java.time.*;
+
+public class DateTimeDemo {
+    public static void main(String[] args) {
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+        LocalDateTime dateTime = LocalDateTime.now();
+
+        System.out.println(date);
+        System.out.println(time);
+        System.out.println(dateTime);
+    }
+}
